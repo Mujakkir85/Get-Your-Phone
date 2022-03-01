@@ -19,15 +19,15 @@
 
     <!-- Search field -->
     <div class="input-group mb-3 w-50 mx-auto ">
-        <input type="text" class="form-control me-2 rounded-pill input-field" placeholder="Search your smart phone">
-        <button class="btn btn-outline-secondary rounded-pill button-field" type="button" id="">Search</button>
+        <input id="search-item" type="text" class="form-control me-2 rounded-pill input-field"
+            placeholder="Search your smart phone">
+        <button onclick="loadSearchItem()" class="btn btn-outline-secondary rounded-pill button-field" type="button"
+            id="">Search</button>
     </div>
 
     <!-- shwo error message -->
-    <div class="card w-50 error-field mx-auto mb-3">
-        <div class="card-body fw-bold">
-            This is some text within a card body.
-        </div>
+    <div id="error-msg">
+
     </div>
 
     <!-- Single detais cart -->
