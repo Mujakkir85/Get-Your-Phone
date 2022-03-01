@@ -1,7 +1,7 @@
 
 const loadSearchItem = () => {
     const searchItem = document.getElementById('search-item').value;
-    console.log(searchItem)
+    //console.log(searchItem)
     document.getElementById('search-item').value = '';
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchItem}`
     fetch(url)
@@ -9,9 +9,14 @@ const loadSearchItem = () => {
         .then(data => showSearchItems(data.data))
 }
 
-const showSearchItems = (items) => {
-    console.log(items);
+//function for clear clearSingleDetails
+function clearSingleDetails() {
+    const singleCart = document.getElementById('single-cart');
+    singleCart.textContent = '';
+}
 
+const showSearchItems = (items) => {
+    //console.log(items);
     // show error for null url
     const errormsg = document.getElementById('error-msg')
     errormsg.textContent = '';
@@ -24,10 +29,15 @@ const showSearchItems = (items) => {
         </div> `
         errormsg.appendChild(div);
     }
-
     //show items
     const showItems = document.getElementById('show-items');
+
+    //remove items
     showItems.textContent = '';
+
+    //reomve single card details
+    clearSingleDetails();
+
     let count = 0;
     items.forEach(item => {
         //console.log(item.brand) //brand// phone_name
@@ -36,7 +46,7 @@ const showSearchItems = (items) => {
             return;
         }
         else {
-            console.log(count);
+            //console.log(count);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -54,11 +64,37 @@ const showSearchItems = (items) => {
     });
 }
 
-const loadDetails = (details) => {
-    const url = `https://openapi.programming-hero.com/api/phone/${details}`;
-    console.log(url);
+//show items detail by Id 
+
+const loadDetails = (detailsId) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${detailsId}`;
+    //console.log(url);
 
     fetch(url)
         .then(Response => Response.json())
-        .then(data => console.log(data.data.brand));
+        .then(data => detailsByid(data.data));
 }
+
+const detailsByid = (itemsDetais) => {
+    //console.log(itemsDetais.releaseDate)
+    const singleCart = document.getElementById('single-cart');
+    // singleCart.textContent = '';
+
+    ////reomve single card details
+    clearSingleDetails();
+
+    const div = document.createElement('div');
+    div.classList.add('card', 'mb-3', 'w-50', 'mx-auto', 'shadow', 'p-3', 'mb-5', 'bg-body', 'rounded', 'd-flex', 'flex-row')
+
+    div.innerHTML = `
+            <img src="${itemsDetais.image}" class="card-img-top img-size" alt="...">
+            <div class="card-body">
+                <p class="card-title"><span class="fw-bold"> Release Date: </span>${itemsDetais.releaseDate ? itemsDetais.releaseDate : 'No date fountd !'}</p>
+                <p class="card-title"><span class="fw-bold"> ChipSet: </span>${itemsDetais.mainFeatures.chipSet}</p>
+                <p class="card-title"><span class="fw-bold"> Display Size: </span>${itemsDetais.mainFeatures.displaySize}</p>
+                <p class="card-title"><span class="fw-bold"> Memory: </span>${itemsDetais.mainFeatures.memory}</p>
+                <p class="card-title"><span class="fw-bold"> Storage: </span>${itemsDetais.mainFeatures.storage}</p>
+            </div>
+        `
+    singleCart.appendChild(div);
+} 
