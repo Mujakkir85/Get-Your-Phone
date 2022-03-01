@@ -46,12 +46,19 @@ const showSearchItems = (items) => {
                         <h5 class="card-title">Name: ${item.brand} </h5>
                         <h5 class="card-title">Brand: ${item.phone_name} </h5>
                     </div>
-                    <a href="" class="b-cart mx-auto">Details</a>
+                    <a onclick="loadDetails('${item.slug}')" class="b-cart mx-auto">Details</a>
                 </div>
         `
             showItems.appendChild(div);
         }
     });
+}
 
+const loadDetails = (details) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${details}`;
+    console.log(url);
 
+    fetch(url)
+        .then(Response => Response.json())
+        .then(data => console.log(data.data.brand));
 }
