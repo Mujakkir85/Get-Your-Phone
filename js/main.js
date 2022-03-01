@@ -84,7 +84,7 @@ const detailsByid = (itemsDetais) => {
     clearSingleDetails();
 
     const div = document.createElement('div');
-    div.classList.add('card', 'mb-3', 'w-50', 'mx-auto', 'shadow', 'p-3', 'mb-5', 'bg-body', 'rounded', 'd-flex', 'flex-row')
+    div.classList.add('card', 'mb-3', 'w-75', 'mx-auto', 'shadow', 'p-3', 'mb-5', 'bg-body', 'rounded', 'd-flex', 'flex-row', 'overflow-auto', 'col-sm-12')
 
     div.innerHTML = `
             <img src="${itemsDetais.image}" class="card-img-top img-size" alt="...">
@@ -94,7 +94,16 @@ const detailsByid = (itemsDetais) => {
                 <p class="card-title"><span class="fw-bold"> Display Size: </span>${itemsDetais.mainFeatures.displaySize}</p>
                 <p class="card-title"><span class="fw-bold"> Memory: </span>${itemsDetais.mainFeatures.memory}</p>
                 <p class="card-title"><span class="fw-bold"> Storage: </span>${itemsDetais.mainFeatures.storage}</p>
+                <p class="card-title"><span class="fw-bold"> Sensors: </span>${itemsDetais.mainFeatures.sensors}</p> 
+                <p class="card-title"><span class="fw-bold"> Bluetooth: </span>${itemsDetais.others.Bluetooth}</p> 
+                <p class="card-title"><span class="fw-bold"> GPS: </span>${itemsDetais.others.GPS}</p> 
+                <p class="card-title"><span class="fw-bold"> NFC: </span>${itemsDetais.others.NFC}</p> 
+                <p class="card-title"><span class="fw-bold"> Radio: </span>${itemsDetais.others.Radio}</p> 
+                <p class="card-title"><span class="fw-bold"> USB: </span>${itemsDetais.others.USB}</p> 
+                <p class="card-title"><span class="fw-bold"> WLAN: </span>${itemsDetais.others.WLAN}</p> 
             </div>
         `
     singleCart.appendChild(div);
-} 
+
+}
+
