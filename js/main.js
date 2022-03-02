@@ -1,6 +1,12 @@
+//spinner
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
 
 const loadSearchItem = () => {
     const searchItem = document.getElementById('search-item').value;
+    //spinner
+    toggleSpinner('block')
     //console.log(searchItem)
     document.getElementById('search-item').value = '';
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchItem}`
@@ -17,6 +23,10 @@ function clearSingleDetails() {
 
 const showSearchItems = (items) => {
     //console.log(items);
+    
+    //spinner
+    toggleSpinner('none')
+
     // show error for null url
     const errormsg = document.getElementById('error-msg')
     errormsg.textContent = '';
@@ -84,11 +94,14 @@ const detailsByid = (itemsDetais) => {
     clearSingleDetails();
 
     const div = document.createElement('div');
-    div.classList.add('card', 'mb-3', 'w-75', 'mx-auto', 'shadow', 'p-3', 'mb-5', 'bg-body', 'rounded', 'd-flex', 'flex-row', 'overflow-auto', 'col-sm-12')
+    div.classList.add('row','mx-auto', 'w-75', 'single-cart-design','shadow-lg','p-3','mb-5','bg-body','rounded');
 
     div.innerHTML = `
-            <img src="${itemsDetais.image}" class="card-img-top img-size" alt="...">
-            <div class="card-body">
+            <div class="col-12 col-md-6 my-2">
+                <img class="w-75" src="${itemsDetais.image}" alt="">
+            </div>
+
+            <div class="col-12 col-md-6 overflow-scroll my-4">
                 <p class="card-title"><span class="fw-bold"> Release Date: </span>${itemsDetais.releaseDate ? itemsDetais.releaseDate : 'No date fountd !'}</p>
                 <p class="card-title"><span class="fw-bold"> ChipSet: </span>${itemsDetais.mainFeatures.chipSet}</p>
                 <p class="card-title"><span class="fw-bold"> Display Size: </span>${itemsDetais.mainFeatures.displaySize}</p>
