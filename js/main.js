@@ -97,11 +97,11 @@ const detailsByid = (itemsDetais) => {
     div.classList.add('row','mx-auto', 'w-75', 'single-cart-design','shadow-lg','p-3','mb-5','bg-body','rounded');
 
     div.innerHTML = `
-            <div class="col-12 col-md-6 my-2">
+            <div class="col-12 col-lg-6 my-2">
                 <img class="w-75" src="${itemsDetais.image}" alt="">
             </div>
 
-            <div class="col-12 col-md-6 overflow-scroll my-4">
+            <div class="col-12 col-lg-6 overflow-scroll my-4">
                 <p class="card-title"><span class="fw-bold"> Release Date: </span>${itemsDetais.releaseDate ? itemsDetais.releaseDate : 'No date fountd !'}</p>
                 <p class="card-title"><span class="fw-bold"> ChipSet: </span>${itemsDetais.mainFeatures.chipSet}</p>
                 <p class="card-title"><span class="fw-bold"> Display Size: </span>${itemsDetais.mainFeatures.displaySize}</p>
