@@ -94,16 +94,33 @@ const detailsByid = (itemsDetais) => {
                 <p class="card-title"><span class="fw-bold"> Display Size: </span>${itemsDetais.mainFeatures.displaySize}</p>
                 <p class="card-title"><span class="fw-bold"> Memory: </span>${itemsDetais.mainFeatures.memory}</p>
                 <p class="card-title"><span class="fw-bold"> Storage: </span>${itemsDetais.mainFeatures.storage}</p>
-                <p class="card-title"><span class="fw-bold"> Sensors: </span>${itemsDetais.mainFeatures.sensors}</p> 
-                <p class="card-title"><span class="fw-bold"> Bluetooth: </span>${itemsDetais.others.Bluetooth}</p> 
-                <p class="card-title"><span class="fw-bold"> GPS: </span>${itemsDetais.others.GPS}</p> 
-                <p class="card-title"><span class="fw-bold"> NFC: </span>${itemsDetais.others.NFC}</p> 
-                <p class="card-title"><span class="fw-bold"> Radio: </span>${itemsDetais.others.Radio}</p> 
-                <p class="card-title"><span class="fw-bold"> USB: </span>${itemsDetais.others.USB}</p> 
-                <p class="card-title"><span class="fw-bold"> WLAN: </span>${itemsDetais.others.WLAN}</p> 
+
+                <!--Sensors --> 
+
+               <p class="card-title"><span class="fw-bold"> Sensors: </span>
+               ${itemsDetais?.mainFeatures?.sensors?.map(value => `<span>${value}</span>`)}</p>
+               <!--Others-->
+               
+                <p class="card-title"><span class="fw-bold"> Bluetooth: </span>${itemsDetais.others ? itemsDetais.others.Bluetooth : 'Bluetooth info not found!'}</p> 
+                <p class="card-title"><span class="fw-bold"> GPS: </span>${itemsDetais.others ? itemsDetais.others.GPS : 'GPS info not found!'}</p> 
+                <p class="card-title"><span class="fw-bold"> NFC: </span>${itemsDetais.others ? itemsDetais.others.NFC : 'NFC info not found!'}</p> 
+                <p class="card-title"><span class="fw-bold"> Radio: </span>${itemsDetais.others ? itemsDetais.others.Radio : 'Radio info not found!'}</p> 
+                <p class="card-title"><span class="fw-bold"> USB: </span>${itemsDetais.others ? itemsDetais.others.USB : 'USB info not found!'}</p> 
+                <p class="card-title"><span class="fw-bold"> WLAN: </span>${itemsDetais.others ? itemsDetais.others.WLAN : 'WLAN info not found!'}</p> 
             </div>
         `
     singleCart.appendChild(div);
 
 }
 
+/*<p class="card-title"><span class="fw-bold"> Sensors: </span>${itemsDetais.mainFeatures.sensors}</p> */
+
+/*${itemsDetais.mainFeatures?.sensors.forEach(sensorItem => {
+        `<p>dfdh${sensorItem}</p>`
+        console.log(sensorItem);
+    })}*/ //forEach not working
+    
+    //map should be used
+    /*<pclass="card-title"><span class="fw-bold"> Sensors: </span>
+    ${itemsDetais?.mainFeatures?.sensors?.map(value => `<span>${value}</span>`)}
+    </p>*/
